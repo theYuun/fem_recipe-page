@@ -12,5 +12,18 @@ const props = defineProps({
     <h1>{{ props.text }}</h1>
 </template>
 
-<style scoped>
+<style>
+    h1 {
+        font-family: 'Young';
+        font-size: 35px;
+        letter-spacing: 0.6px;
+        line-height: 36px;
+    }
+
+    @media (min-width: 376px) {
+        h1 {
+            font-size: 38px;
+            letter-spacing: 1.15px;
+        }
+    }
 </style>

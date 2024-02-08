@@ -12,5 +12,14 @@ const props = defineProps({
     <p>{{ props.text }}</p>
 </template>
 
-<style scoped>
+<style>
+    p {
+        margin-top: 24px;
+        line-height: 24px;
+    }
+    @media (min-width: 376px) {
+        p {
+            margin-top: 24px;
+        }
+    }
 </style>

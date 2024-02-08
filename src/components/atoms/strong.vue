@@ -9,11 +9,11 @@ const props = defineProps({
 </script>
 
 <template>
-    <h3>{{ props.text }}</h3>
+    <strong>{{ props.text }}</strong>
 </template>
 
 <style>
-    h3 {
-        letter-spacing: 0.5px;
+    strong {
+        line-height: 24px;
     }
 </style>

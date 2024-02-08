@@ -10,14 +10,17 @@ const props = defineProps({
     }
 })
 
+const Block = molecules.instructionDiv;
 const Heading2 = atoms.Heading2;
-const List = molecules.ingredientList;
+const List = molecules.instructionList;
 
 </script>
 
 <template>
-    <Heading2 :text="'Instructions'"/>
-    <List :items="[...props.data]" />
+    <Block>
+        <Heading2 :text="'Instructions'"/>
+        <List :isOrdered="true" :items="[...props.data]" />
+    </Block>
 </template>
 
 <style scoped>

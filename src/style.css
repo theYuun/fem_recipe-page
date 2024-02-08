@@ -29,17 +29,23 @@
 * {
   margin: 0;
   padding: 0;
+  /*
   outline: 1px dashed #000f;
-  background-color: #ffff;
+  */
   font-family: 'Outfit';
 }
 
+body {
+  background-color: var(--colorLightGrey);
+}
+
 .refMobile, .refFull {
+  position: relative;
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0.5;
-  background-color: #0000;
+  opacity: 1;
+  z-index: 0;
   pointer-events: none;
 }
 
@@ -48,6 +54,9 @@
 }
 
 @media (min-width: 376px) {
+  body {
+    width: 100%;
+  }
   .refMobile {
     opacity: 0;
   }

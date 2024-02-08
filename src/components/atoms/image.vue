@@ -9,8 +9,16 @@ const props = defineProps({
 </script>
 
 <template>
-    <img :src="props.url">
+    <img class="img" :src="props.url">
 </template>
 
-<style scoped>
+<style>
+    .img {
+        width: calc(100% + 10px);
+    }
+    @media (min-width: 376px) {
+        img {
+            border-radius: 10px;
+        }
+    }
 </style>

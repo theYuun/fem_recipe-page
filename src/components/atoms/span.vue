@@ -1,25 +1,29 @@
 <script setup>
 import { ref, defineProps } from 'vue';
 const props = defineProps({
-    identifier: {
+    text: {
         type: String,
         required: false,
     },
-    customStyle: {
+    data: {
         type: Object,
         required: false,
-    }
+    },
 })
+
 </script>
 
 <template>
-    <hr id="hr">
+    <span v-if="props.text">
+        {{ props.text }}
+    </span>
+    <span v-if="props.data || !props.text">
+        <slot></slot>
+    </span>
 </template>
 
-<style scoped>
-#hr {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    background-color: var(--colorWengeBrown);
-}
+<style>
+    span {
+        line-height: 24px;
+    }
 </style>

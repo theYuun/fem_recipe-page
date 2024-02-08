@@ -4,7 +4,8 @@ import atoms from '../atoms/atoms';
 import molecules from '../molecules/molecules';
 
 const Heading3 = atoms.Heading3;
-const List = molecules.preparationList;
+const PrepList = molecules.preparationList;
+const PrepBlock = molecules.preparationDiv;
 
 const props = defineProps({
     data: {
@@ -15,9 +16,11 @@ const props = defineProps({
 </script>
 
 <template>
-    <Heading3 :text="`Preparation Time`" />
-    <List :items="props.data" />
+    <PrepBlock>
+        <Heading3 :text="`Preparation time`" />
+        <PrepList :items="props.data" />
+    </PrepBlock>
 </template>
 
-<style scoped>
+<style>
 </style>

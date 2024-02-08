@@ -9,6 +9,10 @@ import HorizontalRule from './horizontalRule.vue';
 import table from './table.vue';
 import tableRow from './tableRow.vue';
 import tableCell from './tableCell.vue';
+import divider from './divider.vue';
+import span from './span.vue';
+import strong from './strong.vue';
+import spacer from './spacer.vue';
 
 export default {
     Heading1,
@@ -22,4 +26,8 @@ export default {
     table,
     tableRow,
     tableCell,
+    divider,
+    span,
+    strong,
+    spacer,
 }

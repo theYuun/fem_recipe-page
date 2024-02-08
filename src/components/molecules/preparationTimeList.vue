@@ -2,8 +2,6 @@
 import { ref, defineProps } from 'vue';
 import molecules from './molecules.js';
 
-const ListItem = molecules.preparationTimeListItem;
-
 const props = defineProps({
     isOrdered: {
         type: Boolean,
@@ -14,6 +12,8 @@ const props = defineProps({
         required: true,
     }
 })
+
+const ListItem = molecules.preparationTimeListItem;
 
 const items = ref([])
 Object.entries(props.items).forEach(([key, value]) => {
@@ -31,5 +31,11 @@ Object.entries(props.items).forEach(([key, value]) => {
     </ol>
 </template>
 
-<style scoped>
+<style>
+    ul, ol {
+        position: relative;
+        margin: 17px 23px;
+        margin-bottom: 0;
+        margin-left: 40px;
+    }
 </style>

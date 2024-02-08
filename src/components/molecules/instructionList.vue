@@ -1,6 +1,6 @@
 <script setup>
 import { ref, defineProps } from 'vue';
-import atoms from './atoms.js';
+import molecules from './molecules.js';
 
 const props = defineProps({
     isOrdered: {
@@ -10,24 +10,25 @@ const props = defineProps({
     items: {
         type: Array,
         required: true,
-    },
+    }
 })
 
-const ListItem = atoms.ListItem;
+const ListItem = molecules.instructionListItem;
 
 </script>
 
 <template>
     <ul v-show="!props.isOrdered">
-        <ListItem v-for="item in props.items" :text="item" />
+        <ListItem v-for="item in props.items" :data="item" />
     </ul>
     <ol v-show="props.isOrdered">
-        <ListItem v-for="item in props.items" :text="item" :isOrdered="true" :isOrderedValue="props.items.indexOf(item) - 1" />
+        <ListItem v-for="(item, index) in props.items" :data="item" :isOrderedValue="index" />
     </ol>
 </template>
 
 <style scoped>
-    ul, ol {
-        margin-top: 20px;
-    }
+ul, ol {
+    margin-top: 20px;
+    margin-right: 0;
+}
 </style>
