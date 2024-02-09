@@ -18,16 +18,21 @@ const ListItem = atoms.ListItem;
 </script>
 
 <template>
-    <ul v-show="!props.isOrdered">
-        <ListItem v-for="item in props.items" :text="item" />
+    <ul v-if="!props.isOrdered">
+        <ListItem v-for="item in props.items" >
+            <span class="content" >{{ item }}</span>
+        </ListItem>
     </ul>
-    <ol v-show="props.isOrdered">
-        <ListItem v-for="item in props.items" :text="item" :isOrdered="true" :isOrderedValue="props.items.indexOf(item) - 1" />
+    <ol v-if="props.isOrdered">
+        <ListItem v-for="item in props.items" >
+            <span class="content">{{ item }}</span>
+        </ListItem>
     </ol>
 </template>
 
 <style scoped>
     ul, ol {
+        margin-left: 24px;
         margin-top: 20px;
     }
 </style>

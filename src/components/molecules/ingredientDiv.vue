@@ -13,7 +13,7 @@
     @media (min-width: 376px) {
         .ingredientDivider {
             padding: 0;
-            margin-top: 26px;
+            margin-top: 27px;
             margin-bottom: 32px;
         }
     }

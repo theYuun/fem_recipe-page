@@ -19,7 +19,7 @@ const props = defineProps({
     }
     @media (min-width: 376px) {
         p {
-            margin-top: 24px;
+            margin-top: 26px;
         }
     }
 </style>

@@ -12,12 +12,12 @@
         overflow: hidden;
     }
 
-    @media (min-width: 375px) {
+    @media (min-width: 376px) {
         .appDiv {
-            width: 740px;
+            max-width: 736px;
             margin: auto;
-            margin-top: 120px;
-            border-radius: 10px;
+            margin-top: 123px;
+            border-radius: 25px;
         }
     }
 </style>

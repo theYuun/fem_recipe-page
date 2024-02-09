@@ -24,7 +24,7 @@ Object.entries(props.data).forEach(([key, value]) => {
 </script>
 
 <template>
-    <li>
+    <li class="instructionListIndex">
         <span><Strong :text="`${isOrderedValue + 1}.`"></Strong></span>
         <ContentSpan>
             <Strong :text="`${item[0][1]}: `"></Strong>{{`${item[1][1]}` }}
@@ -33,14 +33,14 @@ Object.entries(props.data).forEach(([key, value]) => {
 </template>
 
 <style scoped>
-    li {
+    .instructionListIndex {
         position: relative;
         list-style-type: none;
         margin-bottom: 8px;
         line-height: 23px;
     }
 
-    span {
+    .instructionListIndex span {
         position: absolute;
         left: -32px;
     }

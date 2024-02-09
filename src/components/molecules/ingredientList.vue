@@ -2,13 +2,9 @@
 import { ref, defineProps } from 'vue';
 import molecules from './molecules.js';
 
-const ListItem = molecules.instructionListItem;
+const ListItem = molecules.ingredientListItem;
 
 const props = defineProps({
-    isOrdered: {
-        type: Boolean,
-        required: false,
-    },
     items: {
         type: Array,
         required: true,
@@ -18,13 +14,13 @@ const props = defineProps({
 </script>
 
 <template>
-    <ul v-show="!props.isOrdered">
+    <div class="ingredientList" >
         <ListItem v-for="item in props.items" :data="item" />
-    </ul>
-    <ol v-show="props.isOrdered">
-        <ListItem v-for="item in props.items" :data="item" />
-    </ol>
+    </div>
 </template>
 
 <style scoped>
+    .ingredientList {
+        margin-top: 19px;
+    }
 </style>

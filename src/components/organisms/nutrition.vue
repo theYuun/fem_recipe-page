@@ -35,7 +35,7 @@ items.value.forEach((subArray) => {
 <template>
     <Block>
         <Heading2 :text="'Nutrition'"/>
-        <Spacer :margins="'-5px 0 0 0'" />
+        <Spacer :margins="'-6px 0 0 0'" />
         <Paragraph :text="props.data.description" />
         <NutritionData :data="items" />
     </Block>

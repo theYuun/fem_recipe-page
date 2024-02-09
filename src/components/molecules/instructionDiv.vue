@@ -5,14 +5,15 @@
     <div class="instructionDivider"><slot></slot></div>
 </template>
 
-<style>
+<style scoped>
     .instructionDivider {
-        padding: 18px 0;
+        margin-top: 28px;
+        margin-bottom: 30px;
     }
 
     @media (min-width: 376px) {
         .instructionDivider {
-            margin-top: 10px;
+            margin-top: 26px;
         }
     }
 </style>

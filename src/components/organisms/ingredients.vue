@@ -11,7 +11,8 @@ const props = defineProps({
 })
 
 const Heading2 = atoms.Heading2;
-const List = atoms.List;
+//const List = atoms.List;
+const List = molecules.ingredientList;
 const Block = molecules.ingredientDiv;
 
 </script>

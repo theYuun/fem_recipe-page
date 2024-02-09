@@ -35,7 +35,7 @@ const props = defineProps({
         margin-top: 25px;
     }
     hr {
-        margin: 13px;
+        margin: 12px 0;
     }
     .content {
         margin: 0;
@@ -64,9 +64,11 @@ const props = defineProps({
     }
 
     @media (min-width: 376px) {
-        
         .value {
-            padding-left: 13px;
+            padding-left: 10px;
+        }
+        hr {
+            margin: 11.5px 0;
         }
     }
 </style>

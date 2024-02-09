@@ -1,4 +1,5 @@
 import ingredientList from './ingredientList.vue';
+import ingredientListItem from './ingredientListItem.vue';
 import ingredientDiv from './ingredientDiv.vue';
 import instructionDiv from './instructionDiv.vue';
 import instructionListItem from './instructionListItem.vue';
@@ -14,6 +15,7 @@ import appDiv from './appDiv.vue';
 
 export default {
     ingredientList,
+    ingredientListItem,
     ingredientDiv,
     instructionDiv,
     instructionListItem,

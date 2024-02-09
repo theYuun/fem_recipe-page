@@ -7,12 +7,12 @@
 
 <style>
     .nutritionDivider {
-        padding: 18px 0;
+        margin: 28px 0;
+        margin-right: 1px;
     }
 
     @media (min-width: 376px) {
         .nutritionDivider {
-            padding: 0;
             margin-top: 26px;
             margin-bottom: 32px;
         }

@@ -15,7 +15,7 @@
 
     @media (min-width: 376px) {
         .prepTimeDiv {
-            margin-top: 34px;
+            margin-top: 32px;
             padding: 24px 27px;
             padding-bottom: 18px;
             width: calc(100% - 46px);

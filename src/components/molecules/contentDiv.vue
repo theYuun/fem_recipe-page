@@ -13,8 +13,8 @@
     
     @media (min-width: 376px) {
         .contentDiv {
-            margin: 40px 0;
-            margin-right: 0px;
+            margin: 0;
+            margin-top: 35px;
         }
     }
 </style>

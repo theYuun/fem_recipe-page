@@ -19,7 +19,7 @@ const props = defineProps({
 <style scoped>
 #hr {
     margin-top: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     background-color: var(--colorWengeBrown);
 }
 </style>

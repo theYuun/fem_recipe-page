@@ -18,6 +18,7 @@ const props = defineProps({
     }
     @media (min-width: 376px) {
         img {
+            width: calc(100% + 10px);
             border-radius: 10px;
         }
     }

@@ -33,6 +33,7 @@
   outline: 1px dashed #000f;
   */
   font-family: 'Outfit';
+  color: var(--colorDarkCharcoal);
 }
 
 body {
@@ -40,16 +41,17 @@ body {
 }
 
 .refMobile, .refFull {
-  position: relative;
   position: absolute;
   top: 0;
   left: 0;
+  width: 375px;
   opacity: 1;
   z-index: 0;
   pointer-events: none;
 }
 
 .refFull {
+  width: 1440px;
   opacity: 0;
 }
 

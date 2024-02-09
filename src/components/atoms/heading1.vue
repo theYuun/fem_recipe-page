@@ -23,7 +23,7 @@ const props = defineProps({
     @media (min-width: 376px) {
         h1 {
             font-size: 38px;
-            letter-spacing: 1.15px;
+            letter-spacing: 1px;
         }
     }
 </style>
