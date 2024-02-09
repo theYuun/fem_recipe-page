@@ -17,6 +17,7 @@
             width: 740px;
             margin: auto;
             margin-top: 120px;
+            border-radius: 10px;
         }
     }
 </style>
