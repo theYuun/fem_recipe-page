@@ -9,7 +9,6 @@
     .recipePageDiv {
         position: relative;
         width: 100%;
-        opacity: 0.5;
     }
 
 @media (min-width: 376px) {
