@@ -32,76 +32,117 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Github repo](https://github.com/theYuun/fem_blog-preview-card)
-- Live Site URL: [Live site](https://theyuun.github.io/fem_blog-preview-card/)
+- Solution URL: [Github repo](https://github.com/theYuun/fem_recipe-page)
+- Live Site URL: [Live site](https://theyuun.github.io/fem_recipe-page/)
 
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
+- Grid
 - Mobile-first workflow
 - [Vue.js](https://vuejs.org) - The Progressive JavaScript Framework
 - [Vite](https://vitejs.dev/) - Next Generation Frontent Tooling
 - [npm](npmjs.com) - The world's largest software registry
-- [INKSCAPE](https://inkscape.org/) - Draw Freely
+- [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) - "I wrote a book called Atomic Design, which covers all that goes into creating and maintaining effective design systems."
 
 ### What I learned
 
-What a cool project to do using Vue.js. I had a lot of fun doing it.
-That said, what an ache in the backside to get images loading on Github Pages. I went through so many solutions that phind suggested and it seems that a slight difference to the original code was what was needed.
+What a finnicky bloody project. I'm of the opinion that the person who created the reference images had a vendetta having made minor adjustments between the mobile and desktop versions.
+The alignment was ever so slightly off between the two versions such that I had to add media queries at rather deep levels to ensure proper alignment.
 
-Setting up the link to ensure Vue can get the proper location for the images was quite a thing.
-To think, I built a way more complex project previously that called data in from a fake server and it lined up perfectly. The project was for a job interview that I unfortunately did not get, mainly due to some missing expectations (testing components). Images are a beast of their own and to a degree I'm not sure why it's working now. I'm just relieved that it's working.
-Firstly, I had to move the files into the public folder and ensure that the reference to those files are working.
-Some of the solutions included adding a ```new URL()``` function that houses the reference which the Vite building process converts to the required reference for Github Pages can then further convert to a working link. (Example 1)
-> Sometimes it just seems that there are too many steps between the dev and the running website, but then I know too little to really comment on that.
+All of that said, this is a grossly over-engineerd project. I used the Atomic Design Methodology to structure the project and although it is a very cool way to structure pretty much any project, especially with frameworks like Vue, it is a bit of a hassle moving between all the different files to try and find where the styles conflict. Do take a swing at the Atomic Design Methodology, it does give you a lot of breathing room when trying to manage a project.
 
-I added an additional data object to check the effectivity of the dynamic nature of what I was building, putting Vue's componentized functionality to use.
-One does not simply try and make the data linkages, you aught to go through the different functions and decide whether the ```computed()``` or ```ref()``` function should be used. Thankfully phind was there to illuminate the difference.
-One does not simply ```<style scoped>``` and assume everything's going to work out fine. Rather create class names on elements and target those ```.objectListItem {}```, than a ```.object li {}```. Ensure you know what you're targeting, lest the style spill over to other elements that you did not mean to target. Not to say that more complicated selectors should never be utilized, like ```.object li:has() {}```, but be careful that future-you and others can read the stylesheet and easily get what's going on. I had some odd floxbox behaviour spilling over when I went the ```<style scoped>``` route. (Example 2)
-> I was against the complicatedness of componentized frameworks like Vue when I first tried to learn Angular, but building a Vanilla Javascript componentized app as practice made me understand and appreciate it so much more.
+I learned about the ```<slot></slot>``` element native to Vue 3, which is a very handy element. It probably does not cover all the bases that ```defineProps({})``` does, probably does some other things better too. It certainly helped with the Nutrition section. I wanted to start that with a ```<table></table>``` element and quickly ran into trouble in trying to add the lines between the rows. (Example 1)
 
-I'm not entirely sure whether this is the best way to tackle a new project, but ensure you have the HTML skeleton first, the JavaScript musculature second, the serving ecosystem third so you can focus your future frustrations out on the CSS fourth. This seems safe.
-> Too many times I'd see style issues in among the other steps to find that I'd lost track of what I was doing before tackling those style issues.
-
-I've gotten more used to the aria attributes having installed a screen reader extention.
-I played around with this a bit and set them up to be data-driven. (Example 3)
-> Install one and have a listen to how I labelled the elements in this app.
-> A note that Screen Readers do not practice quolloque all that well. Vue.js is pronounced as 'Voo dot jay es'
+Psuedo elements, you beautiful bastards! Did you know that you can't style ```::marker``` positions? This was particularly useless in the Ingredients section, where the crafty designer decided to have the bullets on the list vertically centered to the content.
+I only remembered that ```::marker``` was an option when I looked at a fellow completer of this challenge, but did not notice the misalignment of the bullets on the Ingredient list.
+In rides the ```::before``` element. Love this one and it's partner ```::after``` element! The customization on these bad boys can be manipulated using JavaScript even, with the help of CSS custom variables. I set about doing just that and unfortunately had to abandon this approach, given that Vue 3 appears not to handle psuedo class manipulation through custom variable setting all that well it seems. Or maybe I was missing something. In any case, targeting a psuedo class directly is not an option, as there's something about psuedo elements not being part of the DOM.
+I tried 2 approaches from here, one where you can set a ```:style="{ '--x': props.x }"``` property directly in a HTML element (Example 2.1), the other where you need to target CSS variables that you create in your ```:root``` class and have Javascript manipulate these variables (Example 2.2). This was tricky, to be sure and it worked to a degree. I managed to set the ```content: ''``` property to a ```defineProps({})``` value, but getting it to respond properly ultimately did not work, as in Vue 3's lifecycle neither the ```onMounted()``` or ```watchEffect()``` functions did the trick, as phind suggested. I'll conquer these yet.
+I ended up getting frustrated and lazy with my Atomic Design approach at this point and used the ```<slot></slot>``` elements to populate my lists with standard HTML ```<span></span>``` elements and I am not proud. [Example 2.3]
 
 
-####html
-(Example 3)
+
+#### html
+##### Example 1
 ```
-  <h1 class="name" :aria-label="`The article name is ${blogDetails.name}`">{{ blogDetails.name }}</h1>
+// Child component
+<template>
+    <div class="appDiv"><slot></slot></div>
+</template>
+
+// Parent component
+<template>
+    // This here is the child's div
+    <AppBlock class="app">
+        // And this is what gets placed in the <slot></slot> element
+        <RecipePage class="recipePage" :recipe="props.recipes[0]" />
+    </AppBlock>
+</template>
 ```
-####css
-####js
-(Example 1)
+##### Examples 2.1 and 2.2
 ```
-  const authorImageName = props.blogDetails.author.replace(' ', '');
-  const articleID = props.blogDetails.id.toString();
-  const blogHeaderImagePath = computed( () => {
-      return `/fem_blog-preview-card/images/${authorImageName}/articles/${articleID}/image-header.svg`;
-      // The below did not work and also required messing around in the vite.config.js file, which I'm not comfortable doing just yet
-      // return new URL(`/fem_blog-preview-card/public/images/${authorImageName}/articles/${articleID}/image-header.svg`, import.meta.url).href;
-  })
-  const blogAuthorImagePath = computed(() => {
-      return `/fem_blog-preview-card/images/${authorImageName}/image-author.webp`;
-      //return new URL(`/fem_blog-preview-card/public/images/${authorImageName}/image-author.webp`, import.meta.url).href;
-  })
+// Parent component to parent component
+<CustomList :isOrdered="true" :data="props.data" />
+// Parent Component
+<CustomListUnordered v-if="!props.isOrdered" >
+  <CustomListIndex :v-for="item in props.data" :data="props.data" />
+</CustomListUnordered>
+<CustomListOrdered v-if="props.isOrdered">
+  <CustomListIndex :v-for="(item, index) in props.data" :bulletValue="index" :data="props.data" />
+</CustomListOrdered>
+```
+##### Example 2.1
+```
+<li :style="{ '--x': props.x }" >{{ props.content }}</li>
+```
+
+#### css
+##### Example 2.1
+```
+.listIndex {
+  --bulletValue = '';
+}
+.listIndex::before {
+  content: var(--bulletValue);
+  /* ... */
+}
+```
+##### Example 2.2
+```
+:root {
+  --bulletValue: '';
+}
+.listIndex::before {
+  content: var(--bulletValue);
+  /* ... */
+}
+```
+#### js
+##### Example 2.2
+```
+const props = defineProps({
+  bulletValue: {
+    type: String,
+  }
+})
+onMounted(() => {
+  // or watchEffect(() => {
+  // and yes, I know they do different things, but for this either can be used.
+  document.querySelector(':root').style.setProperty('--bulletValue', props.bulletValue);
+})
 ```
 
 ### Continued development
 
-I'll definitely be referencing this project in the future when I need to load images from data.
+I have still to properly figure out the nuances of styling psuedo elements using Vue 3. Although I spent a lot of time, especially on the day I was set to commit this project, I was greatly hindered by the psuedo elements refusing, without errors, to render.
 
 ### Useful resources
 
 - [phind](https://www.phind.com/search?home=true) - phind is very useful when trying to understand not just the part you're working on but you can also, if you phrase your question well enough and add your code to the prompt, get a verbose description of surrounding information as well.
+- [Vue 3 + Vite](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup)
+- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
 ## Author
 
@@ -115,20 +156,3 @@ I'll definitely be referencing this project in the future when I need to load im
 - Some of the authors referenced in the phind results are as follows:
     - Regarding ```v-for="(item, index, key) in list"```[acdcjunior](https://stackoverflow.com/users/1850609/acdcjunior)
     - Regarding ```<slot></slot>``` elements [Solomon Eseme](https://enterprisevue.dev/blog/slots-in-vue-deep-dive/)
-    - []()
-    - []()
-    - []()
-    - []()
-    - []()
-    - []()
-    - []()
-
-
-
-# Vue 3 + Vite
-
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
