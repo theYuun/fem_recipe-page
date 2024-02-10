@@ -1,5 +1,6 @@
 export default [
     {
+        imageAltText: 'An image of a delicious looking omelette.',
         name: 'Simple Omelette Recipe',
         description: 'An easy and quick dish, perfect for any meal. This classic omelette combines beaten eggs cooked to perfection, optionally filled with your choice of cheese, vegetables, or meats.',
         preparation: {

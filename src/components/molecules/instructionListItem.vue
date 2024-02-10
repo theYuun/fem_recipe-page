@@ -10,6 +10,10 @@ const props = defineProps({
     isOrderedValue: {
         type: Number,
         required: false,
+    },
+    index: {
+        type: String,
+        required: true,
     }
 })
 
@@ -24,8 +28,8 @@ Object.entries(props.data).forEach(([key, value]) => {
 </script>
 
 <template>
-    <li class="instructionListIndex">
-        <span><Strong :text="`${isOrderedValue + 1}.`"></Strong></span>
+    <li class="instructionListIndex" :aria-posinset="props.index">
+        <span aria-hidden="true"><Strong :text="`${isOrderedValue + 1}.`"></Strong></span>
         <ContentSpan>
             <Strong :text="`${item[0][1]}: `"></Strong>{{`${item[1][1]}` }}
         </ContentSpan>

@@ -7,6 +7,10 @@ const props = defineProps({
         type: Array,
         required: true,
     },
+    index: {
+        type: String,
+        required: true,
+    }
 })
 
 const Span = atoms.span;
@@ -15,7 +19,7 @@ const Strong = atoms.strong;
 </script>
 
 <template>
-    <li class="prepTimeLi">
+    <li class="prepTimeLi" :aria-posinset="props.index">
         <Strong :text="`${props.data[0].substring(0,1).toUpperCase()}${props.data[0].substring(1,props.data[0].length)}: `">
         </Strong>
         <Span :text="`${props.data[1]}`">

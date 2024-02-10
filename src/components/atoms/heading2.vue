@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <h2>{{ props.text }}</h2>
+    <h2 :aria-label="`${props.text}.`">{{ props.text }}</h2>
 </template>
 
 <style>

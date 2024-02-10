@@ -14,7 +14,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <span v-if="props.text">
+    <span v-if="props.text" :aria-label="`${props.text}:`">
         {{ props.text }}
     </span>
     <span v-if="props.data || !props.text">

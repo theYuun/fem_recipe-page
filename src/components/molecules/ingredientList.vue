@@ -15,7 +15,7 @@ const props = defineProps({
 
 <template>
     <div class="ingredientList" >
-        <ListItem v-for="item in props.items" :data="item" />
+        <ListItem v-for="(item, index) in props.items" :data="item" :index="index" />
     </div>
 </template>
 

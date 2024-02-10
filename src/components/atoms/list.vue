@@ -20,12 +20,12 @@ const ListItem = atoms.ListItem;
 <template>
     <ul v-if="!props.isOrdered">
         <ListItem v-for="item in props.items" >
-            <span class="content" >{{ item }}</span>
+            <span class="content"  :aria-label="`${item}`">{{ item }}</span>
         </ListItem>
     </ul>
     <ol v-if="props.isOrdered">
         <ListItem v-for="item in props.items" >
-            <span class="content">{{ item }}</span>
+            <span class="content" :aria-label="`${item}`">{{ item }}</span>
         </ListItem>
     </ol>
 </template>

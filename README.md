@@ -62,8 +62,6 @@ In rides the ```::before``` element. Love this one and it's partner ```::after``
 I tried 2 approaches from here, one where you can set a ```:style="{ '--x': props.x }"``` property directly in a HTML element (Example 2.1), the other where you need to target CSS variables that you create in your ```:root``` class and have Javascript manipulate these variables (Example 2.2). This was tricky, to be sure and it worked to a degree. I managed to set the ```content: ''``` property to a ```defineProps({})``` value, but getting it to respond properly ultimately did not work, as in Vue 3's lifecycle neither the ```onMounted()``` or ```watchEffect()``` functions did the trick, as phind suggested. I'll conquer these yet.
 I ended up getting frustrated and lazy with my Atomic Design approach at this point and used the ```<slot></slot>``` elements to populate my lists with standard HTML ```<span></span>``` elements and I am not proud. [Example 2.3]
 
-
-
 #### html
 ##### Example 1
 ```

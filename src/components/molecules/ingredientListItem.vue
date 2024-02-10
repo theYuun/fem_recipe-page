@@ -10,6 +10,10 @@ const props = defineProps({
     isOrderedValue: {
         type: String,
         required: false,
+    },
+    index: {
+        type: String,
+        required: true,
     }
 })
 const isOrdered = false;
@@ -21,9 +25,9 @@ onMounted(() => {
 </script>
 
 <template>
-    <li class="ingredientListIndex">
-        <div class="unorderedBullet" v-if="!isOrdered" ></div>
-        <span class="unorderedSpan" v-if="!isOrdered">{{ props.data }}</span>
+    <li class="ingredientListIndex" :aria-posinset="props.index">
+        <div class="unorderedBullet" v-if="!isOrdered" aria-hidden="true" ></div>
+        <span class="unorderedSpan" v-if="!isOrdered" :aria-label="`${props.data}.`">{{ props.data }}</span>
     </li>
 </template>
 

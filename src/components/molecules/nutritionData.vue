@@ -14,8 +14,10 @@ const props = defineProps({
 <template>
     <div class="nutritionDataDivider">
         <ul>
-            <li v-for="(item, index) in props.data">
-                <ul class="content">
+            <li
+                v-for="(item, index) in props.data"
+                :aria-label="`${item[0]}: ${item[1]}.`">
+                <ul class="content" aria-hidden="true">
                     <li class="description">{{ item[0] }}</li>
                     <li class="value">{{ item[1] }}</li>
                     <li class="line" v-if="index < props.data.length-1"><hr></li>

@@ -30,7 +30,7 @@ const imageRef = computed(() => {
 
 <template>
     <RecipePageBlock class="recipePage">
-        <Image :url="imageRef" />
+        <Image :url="imageRef" :imageAltText="props.recipe.imageAltText" />
         <ContentBlock>
             <Heading1 :text="props.recipe.name" />
             <Paragraph :text="props.recipe.description"/>

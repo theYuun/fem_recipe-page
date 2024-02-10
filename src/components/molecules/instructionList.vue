@@ -19,10 +19,10 @@ const ListItem = molecules.instructionListItem;
 
 <template>
     <ul v-show="!props.isOrdered">
-        <ListItem v-for="item in props.items" :data="item" />
+        <ListItem v-for="(item, index) in props.items" :data="item" :index="index" />
     </ul>
     <ol v-show="props.isOrdered">
-        <ListItem v-for="(item, index) in props.items" :data="item" :isOrderedValue="index" />
+        <ListItem v-for="(item, index) in props.items" :data="item" :isOrderedValue="index" :index="index" />
     </ol>
 </template>
 

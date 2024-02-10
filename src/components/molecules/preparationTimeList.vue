@@ -24,10 +24,10 @@ Object.entries(props.items).forEach(([key, value]) => {
 
 <template>
     <ul v-show="!props.isOrdered">
-        <ListItem v-for="item in items" :data="item" />
+        <ListItem v-for="(item, index) in items" :data="item" :index="index" />
     </ul>
     <ol v-show="props.isOrdered">
-        <ListItem v-for="item in items" :data="item" />
+        <ListItem v-for="(item, index) in items" :data="item" :index="index" />
     </ol>
 </template>
 
